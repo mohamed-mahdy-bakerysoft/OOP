@@ -1,0 +1,12 @@
+Daten des Buergeramtes
+Name des Buergeramtes:1
+oeffnungszeit des Buergeramtes:1.0 - 1.0
+Strasse und Hausnummer des Buergeramtes:1
+Dienstleistrungen des Freizeitbades:[Ljava.lang.String;@2ff1c37e
+
+Daten des Buergeramtes
+Name des Buergeramtes:1
+oeffnungszeit des Buergeramtes:1.0 - 1.0
+Strasse und Hausnummer des Buergeramtes:1
+Dienstleistrungen des Freizeitbades:[Ljava.lang.String;@73cc11f
+

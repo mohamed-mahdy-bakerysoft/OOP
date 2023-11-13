@@ -1,8 +1,8 @@
 package factory;
 
-public class ConcreteTxtCreator extends TxtCreator
+public class ConcreteTxtCreator extends Creator
 {
-	public TxtProduct factoryMethod()
+	public Product factoryMethod()
 	{
 		return new ConcreteTxtProduct();
 	}

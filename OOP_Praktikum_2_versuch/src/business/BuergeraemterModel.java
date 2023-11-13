@@ -6,8 +6,6 @@ import factory.ConcreteCreator;
 import factory.ConcreteTxtCreator;
 import factory.Creator;
 import factory.Product;
-import factory.TxtCreator;
-import factory.TxtProduct;
 
 public class BuergeraemterModel {
 	
@@ -20,8 +18,8 @@ public class BuergeraemterModel {
 			writer.schliesseDatei();
 		}
 		public void schreibeBuergeraemterInTxtDatei()throws IOException{
-			TxtCreator writerCreator = new ConcreteTxtCreator();
-			TxtProduct writer = writerCreator.factoryMethod();
+			Creator writerCreator = new ConcreteTxtCreator();
+			Product writer = writerCreator.factoryMethod();
 			writer.fuegeInDateiHinzu(this.buergeramt);
 			writer.schliesseDatei();
 		}
