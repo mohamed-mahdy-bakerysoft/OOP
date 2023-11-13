@@ -1,9 +1,11 @@
 package factory;
 
-public class ConcreteCreator extends Creator {
+public class ConcreteTxtCreator extends Creator {
+
 	@Override
 	public Product factoryMethod() {
 		// TODO Auto-generated method stub
-		return new ConcreteProduct();
+		return new ConcreteTxtProduct();
 	}
+
 }
