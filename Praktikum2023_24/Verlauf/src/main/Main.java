@@ -1,8 +1,9 @@
 package main;
 
+import gui.guiBuergeraemter.BuergeraemterControl;
+import gui.guiStaedtischeEinrichtungen.StaedtischeEinrichtungenControl;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import main.Buergeraemter.BuergeraemterControl;
 
 public class Main extends Application{
 
@@ -15,6 +16,8 @@ public class Main extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		new BuergeraemterControl(primaryStage);
+		Stage fensterStaedtischeEinrichtung = new Stage();
+		new StaedtischeEinrichtungenControl(fensterStaedtischeEinrichtung);
 	}
 
 }
