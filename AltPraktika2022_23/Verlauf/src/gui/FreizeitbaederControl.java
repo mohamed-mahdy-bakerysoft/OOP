@@ -48,7 +48,7 @@ public class FreizeitbaederControl
     		 }
     		 else
     	 	{
-    		 view.zeigeInformationsfensterAn("Noch nicht implementiert!");
+    		 model.schreibeFreizeitbaederInTxtDatei();
     	 	}
     	 	}
     	
