@@ -2,7 +2,7 @@ package fabrik;
 
 import java.io.IOException;
 
-import business.Freizeitbad;
+import business.businessFreizeitbaeder.Freizeitbad;
 
 public abstract class TxtProduct 
 {

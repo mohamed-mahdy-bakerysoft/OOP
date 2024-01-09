@@ -2,8 +2,8 @@ package gui.guiFeizeitbaeder;
 
 import java.io.IOException;
 import Observer.Observer;
-import business.Freizeitbad;
-import business.FreizeitbaederModel;
+import business.businessFreizeitbaeder.Freizeitbad;
+import business.businessFreizeitbaeder.FreizeitbaederModel;
 import gui.guiSportstaetten.SportstaettenControl;
 import javafx.stage.Stage; 
 import ownUtil.PlausiException;

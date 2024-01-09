@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import business.Freizeitbad;
+import business.businessFreizeitbaeder.Freizeitbad;
 
 public class ConcreteTxtProduct extends TxtProduct
 {

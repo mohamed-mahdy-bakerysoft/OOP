@@ -2,8 +2,8 @@ package gui.guiFeizeitbaeder;
 
 import java.util.ArrayList;
 
-import business.Freizeitbad;
-import business.FreizeitbaederModel;
+import business.businessFreizeitbaeder.Freizeitbad;
+import business.businessFreizeitbaeder.FreizeitbaederModel;
 import gui.guiSportstaetten.SportstaettenControl;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
