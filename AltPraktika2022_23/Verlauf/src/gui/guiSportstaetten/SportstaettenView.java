@@ -68,7 +68,25 @@ public class SportstaettenView {
    	    });
     }
    
-    public void zeigeFreizeitbaederAn(){
+   public void zeigeFreizeitbaederAn()
+   {
+   	 if(freizeitbaederModel.getFreizeitbaeder().size() > 0)
+   	 {
+   		 StringBuffer text = new StringBuffer();
+   	
+   		 // Ergaenzen: for each – Schleife ueber ArrayList
+   	 
+   		 freizeitbaederModel.getFreizeitbaeder().forEach(Freizeitbad -> text.append(Freizeitbad.gibFreizeitbadZurueck(' ') + "\n"));
+   		 txtAnzeigeFreizeitbaeder.setText(text.toString());
+   	 }
+   	 
+   	 else
+   	 {
+   		 zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");
+   	 }
+   }
+   
+    /*public void zeigeFreizeitbaederAn(){
     		if(freizeitbaederModel.getFreizeitbad() != null){
     			txtAnzeigeFreizeitbaeder.setText(
     				freizeitbaederModel.getFreizeitbad()
@@ -78,7 +96,7 @@ public class SportstaettenView {
     			zeigeInformationsfensterAn(
  				"Bisher wurde kein Freizeitbad aufgenommen!");
     		}
-    }	
+    }*/	
    
     private void zeigeInformationsfensterAn(String meldung){
     	  	new MeldungsfensterAnzeiger(Alert.AlertType.INFORMATION, "Information", meldung).zeigeMeldungsfensterAn();

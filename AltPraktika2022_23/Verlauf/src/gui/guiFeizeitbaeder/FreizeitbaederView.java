@@ -1,5 +1,8 @@
 package gui.guiFeizeitbaeder;
 
+import java.util.ArrayList;
+
+import business.Freizeitbad;
 import business.FreizeitbaederModel;
 import gui.guiSportstaetten.SportstaettenControl;
 import javafx.event.ActionEvent;
@@ -126,7 +129,7 @@ public class FreizeitbaederView
     
     
     private void initListener() {
-	    btnEingabe.setOnAction(new EventHandler<ActionEvent>() {
+	    /*btnEingabe.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
             	
@@ -150,10 +153,15 @@ public class FreizeitbaederView
 	    	 public void handle(ActionEvent e) {
 	    	 schreibeFreizeitbaederInDatei("txt");
 	    	 }
-	    	 });
+	    	 });*/
+    	
+    	btnEingabe.setOnAction(e->control.nehmeFreizeitbadAuf(txtName.getText(), txtGeoeffnetVon.getText(), txtGeoeffnetBis.getText(), txtBeckenlaenge.getText(), txtWassTemperatur.getText()));
+    	btnAnzeige.setOnAction(e->zeigeFreizeitbaederAn());
+    	mnItmCsvExport.setOnAction(e->schreibeFreizeitbaederInDatei("csv"));
+    	mnItmTxtExport.setOnAction(e->schreibeFreizeitbaederInDatei("txt"));
     }
     
-    public void zeigeFreizeitbaederAn(){
+    /*public void zeigeFreizeitbaederAn(){
     	if(model.getFreizeitbad() != null){
     		txtAnzeige.setText(
     			model.getFreizeitbad().gibFreizeitbadZurueck(' '));
@@ -161,6 +169,24 @@ public class FreizeitbaederView
     	else{
     		zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");
     	}
+    }*/
+    
+    public void zeigeFreizeitbaederAn()
+    {
+    	 if(model.getFreizeitbaeder().size() > 0)
+    	 {
+    		 StringBuffer text = new StringBuffer();
+    	
+    		 // Ergaenzen: for each – Schleife ueber ArrayList
+    	 
+    		 model.getFreizeitbaeder().forEach(Freizeitbad -> text.append(Freizeitbad.gibFreizeitbadZurueck(' ') + "\n"));
+    		 txtAnzeige.setText(text.toString());
+    	 }
+    	 
+    	 else
+    	 {
+    		 zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");
+    	 }
     }
     
     void zeigeInformationsfensterAn(String meldung){

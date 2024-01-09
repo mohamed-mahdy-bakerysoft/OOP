@@ -25,7 +25,7 @@ public class FreizeitbaederControl implements Observer
     public void nehmeFreizeitbadAuf(String name, String von, String bis, String laenge, String temperatur)
     {
     	try{
-    		model.setFreizeitbad(new Freizeitbad(name, von, bis, laenge, temperatur));
+    		model.addFreizeitbad(new Freizeitbad(name, von, bis, laenge, temperatur));
     		//this.update();
     		model.notifyObservers();
     		//view.zeigeInformationsfensterAn("Das Freizeitbad wurde aufgenommen!");

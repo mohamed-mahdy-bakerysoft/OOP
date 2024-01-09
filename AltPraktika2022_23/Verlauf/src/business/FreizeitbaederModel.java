@@ -1,6 +1,7 @@
 package business;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Vector;
 import Observer.Observable;
 import Observer.Observer;
@@ -15,7 +16,8 @@ public class FreizeitbaederModel implements Observable
 {
 	private Vector<Observer> observers = new Vector<Observer>();
 	//private FreizeitbaederControl control;
-	private Freizeitbad freizeitbad;
+	//private Freizeitbad freizeitbad;
+	private ArrayList<Freizeitbad> freizeitbaeder = new ArrayList<>();
 	private static FreizeitbaederModel fbModel;
 	
 	private FreizeitbaederModel()
@@ -43,7 +45,18 @@ public class FreizeitbaederModel implements Observable
 			Product writer = writerCreator.factoryMethod();
 			
 			
-			writer.fuegeInDateiHinzu(this.freizeitbad);
+			//writer.fuegeInDateiHinzu(this.freizeitbad);
+			
+			this.getFreizeitbaeder().forEach(Freizeitbad -> {
+				try 
+				{
+					writer.fuegeInDateiHinzu(Freizeitbad);
+				}catch (IOException e) 
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 			writer.schliesseDatei();
 	} 
 	
@@ -51,18 +64,35 @@ public class FreizeitbaederModel implements Observable
 	{
 		TxtCreator writerCreator = new ConcreteTxtCreator();
 		TxtProduct writer = writerCreator.factoryMethod();
-		writer.fuegeInDateiHinzu(this.freizeitbad);
+		
+		//writer.fuegeInDateiHinzu(this.freizeitbad);
+		this.getFreizeitbaeder().forEach(Freizeitbad -> {
+			try 
+			{
+				writer.fuegeInDateiHinzu(Freizeitbad);
+			}catch (IOException e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		writer.schliesseDatei();
 		writer.schliesseDatei();
 	}
 	
-	public Freizeitbad getFreizeitbad()
+	public ArrayList<Freizeitbad> getFreizeitbaeder()
 	{
-		return freizeitbad;
+		return freizeitbaeder;
 	}
 	
-	public void setFreizeitbad(Freizeitbad freizeitbad)
+	/*public void setFreizeitbad(Freizeitbad freizeitbad)
 	{
 		this.freizeitbad = freizeitbad;
+	}*/
+	
+	public void addFreizeitbad(Freizeitbad freizeitbad)
+	{
+		freizeitbaeder.add(freizeitbad);
 	}
 	
 	public static FreizeitbaederModel getInstance()
