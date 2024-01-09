@@ -1,9 +1,9 @@
 package business;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-
+import java.util.Vector;
+import Observer.Observable;
+import Observer.Observer;
 import fabrik.ConcreteCreator;
 import fabrik.ConcreteTxtCreator;
 import fabrik.Creator;
@@ -11,12 +11,14 @@ import fabrik.Product;
 import fabrik.TxtCreator;
 import fabrik.TxtProduct;
 
-public class FreizeitbaederModel 
+public class FreizeitbaederModel implements Observable
 {
+	private Vector<Observer> observers = new Vector<Observer>();
 	//private FreizeitbaederControl control;
 	private Freizeitbad freizeitbad;
+	private static FreizeitbaederModel fbModel;
 	
-	public FreizeitbaederModel()
+	private FreizeitbaederModel()
 	{
 		//this.control = control;
 	}
@@ -62,5 +64,33 @@ public class FreizeitbaederModel
 	{
 		this.freizeitbad = freizeitbad;
 	}
+	
+	public static FreizeitbaederModel getInstance()
+	{
+		if(fbModel == null)
+		{
+			fbModel = new FreizeitbaederModel();
+		}
+		return fbModel;
+	}
+	
+	public void addObserver(Observer obs)
+	{
+		this.observers.addElement(obs);
+	}
+	
+	public void removeObserver(Observer obs)
+	{
+		this.observers.removeElement(obs);
+	}
+	
+	public void notifyObservers()
+	{
+		for(int i = 0; i<this.observers.size(); i++)
+		{
+			this.observers.elementAt(i).update();
+		}
+	}
+
 }
  
