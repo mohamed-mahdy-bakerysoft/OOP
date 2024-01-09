@@ -1,0 +1,2 @@
+Bochumerstrasse;310;Laminat
+Unicenter;333;Parkett

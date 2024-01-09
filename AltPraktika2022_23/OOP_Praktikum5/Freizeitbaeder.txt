@@ -1,0 +1,12 @@
+Daten des Freizeitbades
+Name des Freizeitbades:                  bad 3
+Öffnungszeit des Freizeitbades:          2.0 - 20.0
+Beckenlänge des Freizeitbades:           20
+Wassertemperatur des Freizeitbades:      20
+
+Daten des Freizeitbades
+Name des Freizeitbades:                  bad 4
+Öffnungszeit des Freizeitbades:          4.0 - 18.0
+Beckenlänge des Freizeitbades:           18
+Wassertemperatur des Freizeitbades:      17
+

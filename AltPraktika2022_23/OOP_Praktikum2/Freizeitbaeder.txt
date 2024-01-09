@@ -1,0 +1,6 @@
+Daten des Freizeitbades
+Name des Freizeitbades:                  Universitätsbad
+Öffnungszeit des Freizeitbades:          8.0 - 20.0
+Beckenlänge des Freizeitbades:           50
+Wassertemperatur des Freizeitbades:      21
+
