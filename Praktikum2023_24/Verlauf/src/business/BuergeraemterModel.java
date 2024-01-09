@@ -1,17 +1,28 @@
 package business;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
+
+import factory.ConcreteCSVCreator;
+import factory.ConcreteTxtCreator;
+import factory.Creator;
+import factory.Product;
 
 public class BuergeraemterModel {
 	
 	public Buergeramt buergeramt;
 	
 		public void schreibeBuergeraemterInCsvDatei() throws IOException {
-			BufferedWriter aus = new BufferedWriter(new FileWriter("Buergeraemter.csv", true));
-			aus.write(this.getBuergeramt().gibBuergeramtZurueck(';'));
-			aus.close();
+			Creator writerCreator = new ConcreteCSVCreator();
+			Product writer = writerCreator.factoryMethod();
+			writer.fuegeInDateiHinzu(this.buergeramt);
+			writer.schliesseDatei();
+		}
+		
+		public void schreibeBuergeraemterInTxtDatei() throws IOException {
+			Creator writerCreator = new ConcreteTxtCreator();
+			Product writer = writerCreator.factoryMethod();
+			writer.fuegeInDateiHinzu(this.buergeramt);
+			writer.schliesseDatei();
 		}
 		
 		public Buergeramt getBuergeramt() {

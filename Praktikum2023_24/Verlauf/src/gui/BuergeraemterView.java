@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import ownUtil.MeldungsfensterAnzeiger;
 import main.*;
+import main.Buergeraemter.BuergeraemterControl;
 
 public class BuergeraemterView {
 	 //---Anfang Attribute der grafischen Oberflaeche---
