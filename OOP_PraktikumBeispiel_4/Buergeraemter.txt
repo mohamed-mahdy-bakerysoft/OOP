@@ -1,0 +1,12 @@
+Daten des Bürgeramts
+Name des Bürgeramts: lorenzu
+Öffnungszeit des Bürgeramts: 1.0 - 1.0
+Strasse und Hausnummer des Bürgeramts: 1
+Dienstleistungen des Bürgeramts: 1
+
+Daten des Bürgeramts
+Name des Bürgeramts: Marlon
+Öffnungszeit des Bürgeramts: 1.0 - 1.0
+Strasse und Hausnummer des Bürgeramts: 1
+Dienstleistungen des Bürgeramts: 1
+
