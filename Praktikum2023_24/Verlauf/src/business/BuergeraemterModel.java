@@ -1,6 +1,7 @@
 package business;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import factory.ConcreteCSVCreator;
@@ -12,7 +13,10 @@ import ownUtil.Observer;
 
 public class BuergeraemterModel implements Observable{
 	
-	public Buergeramt buergeramt;
+	// Generics 
+	public ArrayList<Buergeramt> buergeramter = new ArrayList<>();
+	//public Buergeramt buergeramt;
+	
 	// Singleton
 	private static BuergeraemterModel instance;
 	
@@ -22,25 +26,46 @@ public class BuergeraemterModel implements Observable{
 		public void schreibeBuergeraemterInCsvDatei() throws IOException {
 			Creator writerCreator = new ConcreteCSVCreator();
 			Product writer = writerCreator.factoryMethod();
-			writer.fuegeInDateiHinzu(this.buergeramt);
+			//writer.fuegeInDateiHinzu(this.buergeramt);
+			this.getBuergeramt().forEach(Buergeramt -> {
+				try{
+					writer.fuegeInDateiHinzu(Buergeramt);
+				}catch (IOException e){
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 			writer.schliesseDatei();
 		}
 		
 		public void schreibeBuergeraemterInTxtDatei() throws IOException {
 			Creator writerCreator = new ConcreteTxtCreator();
 			Product writer = writerCreator.factoryMethod();
-			writer.fuegeInDateiHinzu(this.buergeramt);
+			//writer.fuegeInDateiHinzu(this.buergeramt);
+			this.getBuergeramt().forEach(Buergeramt -> {
+				try{
+					writer.fuegeInDateiHinzu(Buergeramt);
+				}catch (IOException e){
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 			writer.schliesseDatei();
 		}
 		
-		public Buergeramt getBuergeramt() {
-			return this.buergeramt;
+		public ArrayList<Buergeramt> getBuergeramt() {
+			return this.buergeramter;
 		}
 
-		public void setBuergeramt(Buergeramt buergeramt) {
-			this.buergeramt = buergeramt;
+		public void addBuergeramt(Buergeramt buergeramt){
+			buergeramter.add(buergeramt);
 		}
 		
+		/**
+		 * public void setBuergeramt(Buergeramt buergeramt) {
+			this.buergeramt = buergeramt;
+			}
+		 */
 		// Singleton
 		public static BuergeraemterModel getInstance() {		
 			if(instance == null) {

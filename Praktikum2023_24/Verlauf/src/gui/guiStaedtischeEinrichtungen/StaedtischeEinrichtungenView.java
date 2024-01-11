@@ -70,7 +70,8 @@ public class StaedtischeEinrichtungenView {
     }
    
     public void zeigeBuergeraemterAn(){
-    		if(buergeraemterModel.getBuergeramt() != null){
+    		/**
+    		 * if(buergeraemterModel.getBuergeramt() != null){
     			txtAnzeigeBuergeraemter.setText(
     				buergeraemterModel.getBuergeramt()
  				.gibBuergeramtZurueck(' '));
@@ -79,6 +80,17 @@ public class StaedtischeEinrichtungenView {
     			zeigeInformationsfensterAn(
  				"Bisher wurde kein Bürgeramt aufgenommen!");
     		}
+    		 */
+    	if(buergeraemterModel.getBuergeramt().size() > 0){
+      		 StringBuffer text = new StringBuffer();
+
+      		 // Ergaenzen: for each – Schleife ueber ArrayList
+      		 buergeraemterModel.getBuergeramt().forEach(Buergeramt -> text.append(
+      				 Buergeramt.gibBuergeramtZurueck(' ') + "\n"));
+      		txtAnzeigeBuergeraemter.setText(text.toString());
+      	 	}else{
+      	 		zeigeInformationsfensterAn("Bisher wurde kein Buergeramt aufgenommen!");
+      	 	}
     }	
    
     private void zeigeInformationsfensterAn(String meldung){

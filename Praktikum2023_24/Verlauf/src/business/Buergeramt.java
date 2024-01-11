@@ -1,5 +1,7 @@
 package business;
 
+import java.util.ArrayList;
+
 public class Buergeramt {
 	
 	// Name des Buergeramtes
@@ -10,15 +12,24 @@ public class Buergeramt {
     // Strasse und Hausnummer des Buergeramtes
     private String strasseHNr;
     // Dienstleistungen des Buergeramtes
-    private String[] dienstleistungen;
-
+    //private String[] dienstleistungen;
+    private ArrayList<String> dienstleistungen = new ArrayList<>();
     public Buergeramt(String name, float geoeffnetVon, float geoeffnetBis,
     	String strasseHNr, String[] dienstleistungen){
+    	if(dienstleistungen == null) {
+            throw new IllegalArgumentException("Dienstleistungen duerfen nicht null sein.");
+        }
    		this.name = name;
   	    this.geoeffnetVon = geoeffnetVon;
    	    this.geoeffnetBis = geoeffnetBis;
    	    this.strasseHNr = strasseHNr;
-   	    this.dienstleistungen = dienstleistungen;
+   	    this.setDienstleistungenAusStringArray(dienstleistungen);
+    }
+    
+    private void setDienstleistungenAusStringArray(String[] dienstleistungen) {
+    	for(int i= 0; i < dienstleistungen.length; i++){
+    		this.dienstleistungen.add(dienstleistungen[i]);
+    	}
     }
     
 	public String getName() {
@@ -53,21 +64,23 @@ public class Buergeramt {
 		this.strasseHNr = strasseHNr;
 	}
 
-	public String[] getDienstleistungen() {
+	public ArrayList<String> getDienstleistungen() {
 		return dienstleistungen;
 	}
 
-	public void setDienstleistungen(String[] dienstleistungen) {
-		this.dienstleistungen = dienstleistungen;
-	}
+	/**
+	 * public void setDienstleistungen(String[] dienstleistungen) {
+		this.liste = dienstleistungen;
+		}
+	 */
 	
 	public String getDienstleistungenAlsString(char trenner) {
 		String ergebnis = "";
 		int i = 0;
-		for(i = 0; i < this.getDienstleistungen().length - 1; i++) {
-			ergebnis = ergebnis + this.getDienstleistungen()[i] + trenner; 
+		for(i = 0; i < dienstleistungen.size() - 1; i++) {
+			ergebnis = ergebnis + dienstleistungen.get(i) + trenner; 
 		}
-		return ergebnis	+ this.getDienstleistungen()[i];
+		return ergebnis	+ dienstleistungen.get(i);
 	}
 	
 	public String gibBuergeramtZurueck(char trenner){
