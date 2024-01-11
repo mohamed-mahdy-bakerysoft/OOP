@@ -10,3 +10,9 @@ Oeffnungszeit des Buergamts: 1.0-1.0
 Strasse und Hausnummer des Buergamts: 1
 Dienstleistungen des Buegeramts: 1
 
+Daten des Buergeramts
+Name des Buergeramts: 1
+Oeffnungszeit des Buergamts: 1.0-1.0
+Strasse und Hausnummer des Buergamts: 1
+Dienstleistungen des Buegeramts: 1
+
