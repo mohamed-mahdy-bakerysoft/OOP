@@ -1,0 +1,18 @@
+Daten des Bürgeramts
+Name des Bürgeramts: 1
+Öffnungszeit des Bürgeramts: 1.0 - 1.0
+Strasse und Hausnummer des Bürgeramts: 1
+Dienstleistungen des Bürgeramts: 1
+
+Daten des Bürgeramts
+Name des Bürgeramts: 11
+Öffnungszeit des Bürgeramts: 11.0 - 11.0
+Strasse und Hausnummer des Bürgeramts: 11
+Dienstleistungen des Bürgeramts: 11
+
+Daten des Bürgeramts
+Name des Bürgeramts: 112
+Öffnungszeit des Bürgeramts: 112.0 - 112.0
+Strasse und Hausnummer des Bürgeramts: 112
+Dienstleistungen des Bürgeramts: 112
+
