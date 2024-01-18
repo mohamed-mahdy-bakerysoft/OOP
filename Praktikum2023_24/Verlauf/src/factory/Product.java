@@ -2,7 +2,7 @@ package factory;
 
 import java.io.IOException;
 
-import business.Buergeramt;
+import business.buergeramt.Buergeramt;
 
 public abstract class Product {
 	public abstract void fuegeInDateiHinzu(Buergeramt buergeramt) throws IOException;

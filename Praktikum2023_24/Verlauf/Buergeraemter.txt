@@ -16,15 +16,3 @@ Name des Bürgeramts: 112
 Strasse und Hausnummer des Bürgeramts: 112
 Dienstleistungen des Bürgeramts: 112
 
-Daten des Bürgeramts
-Name des Bürgeramts: 1
-Öffnungszeit des Bürgeramts: 1.0 - 1.0
-Strasse und Hausnummer des Bürgeramts: 1
-Dienstleistungen des Bürgeramts: 1
-
-Daten des Bürgeramts
-Name des Bürgeramts: 12
-Öffnungszeit des Bürgeramts: 12.0 - 12.0
-Strasse und Hausnummer des Bürgeramts: 12
-Dienstleistungen des Bürgeramts: 12
-

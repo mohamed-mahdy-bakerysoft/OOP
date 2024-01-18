@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import business.Buergeramt;
+import business.buergeramt.Buergeramt;
 
 public class ConcreteTxtProduct extends Product{
 	//private PrintWriter aus;

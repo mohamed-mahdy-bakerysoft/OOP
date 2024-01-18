@@ -1,18 +1,20 @@
 package gui.guiStaedtischeEinrichtungen;
 
-import business.BuergeraemterModel;
+import business.buergeramt.BuergeraemterModel;
+import business.sporthallen.SporthallenModel;
 import javafx.stage.Stage;
 import ownUtil.Observer;
 
 public class StaedtischeEinrichtungenControl implements Observer {
 	private BuergeraemterModel buergeraemterModel;
 	private StaedtischeEinrichtungenView staedtischeEinrichtungenView;
-	
+	private SporthallenModel sporthallenModel;
 	public StaedtischeEinrichtungenControl(Stage primaryStage){
 		// TODO Auto-generated method stub
 		// Singleton
 		this.buergeraemterModel = BuergeraemterModel.getInstance();
-		this.staedtischeEinrichtungenView = new StaedtischeEinrichtungenView(primaryStage, this, buergeraemterModel);
+		this.sporthallenModel = SporthallenModel.getInstance();
+		this.staedtischeEinrichtungenView = new StaedtischeEinrichtungenView(this, primaryStage, this.buergeraemterModel, this.sporthallenModel);
 		this.buergeraemterModel.addObserver(this);
 	}
 
