@@ -1,0 +1,224 @@
+Dies ist jedeglich eine Zusammenfassung fuer mich, wo ich nicht aufgepasst habe oder es vergessen koennte:
+
+Grundlagen zur Versionsverwaltung:
+	- Versionsnummer:
+		Beispiel aus dem Skript von Oesing: 3.2.5-0196
+		3 -> Hauptversionsnummer (signifikante Änderung)
+		2 -> Nebenversionsnummer (Erweiterungen)
+		5 -> Revisionsnummer (Fehlerbehebungen)
+		0196 -> Buildnummer (Fortschritt, Anzahl Kompilierungen)
+		-> Unterscheidung
+		
+	- Lokale Versionsverwaltung:
+		War die erste Art der Verwaltung, wird nur eine Datei verwaltet, wobei die Versionen direkt 
+		in das selbe Dokument gespeichert wird. (Fuer Groesse Projekte nicht angebracht)
+	
+	- Zentrale und verteilte Versionsverwaltung: (Bsp.: Github)
+		Als Client-Server-System aufgebaut, mithilfe einer Rechteverwaltung wird dafuer gesorgt, dass
+		nur Anwender mit Berechtigung neue Versionen legen koennen.
+		-> Die Versionsgeschichte ist nur im Repository vorhanden.
+	
+	- Sandbox-Prinzip und Revision
+		Sandbox prinzip ist einfach du ziehst nh kopie bearbeitest die und legst die wieder rein
+		Das ziehen der Datei nennt man "auschecken".
+		Beim "Einchecken" also wieder einlegen, wird eine neue Revision erstellt
+			->Revision speichert einmal die Revisionsnummer und Zeitstempel.
+		-> also Github in a nutshell
+								
+	- Optimistic/Pessimistic locking:
+		Im Optimistic locking, ist es möglich die Datei auszucheken, beim einchecken muss man evtl. 
+		pruefen ob es vorher schon verandert wurde. Im Pessimistic fall, wuerde das auschecken geprueft ob ein 
+		andere schon ausgescheckt hat, wenn ja ist es geschlossen.
+		
+	- Ausschecken und Einchecken in Schritten:
+		Step 1:
+			-> 	Nutzer A und Nutzer B checken aus also nehmen sich eine Kopie aus dem Repository
+				und beabeiten diese im anschluss. 
+		Step 2:
+			->	Nutzer A checkt die datei ins Repository ein. Nutzer B wird dabei benachrichtigt.
+				In Repository befindet sich jetzt die Datei von Person A.
+		Step 3:
+			->	Die im Repository liegende Datei wird mit der Datei von Nutzer B gemerge (angpasst)
+				Dadurch wird die datei von Nutzer B mit der von A angpasst und bildet sich neu zu einer Datei.
+		Step 4:
+			-> Nutzer B checkt die neue Datei in das Repository.
+		
+	- Merge Problem:
+		Sobald beim anpassen bzw. verschmelzen gleichzeitig die selbe Zeile verandert wurde,
+		dann ensteht ein Konflikt.
+		
+	- Beispiel zu Auslieferung von Softwareversionen (Classic):
+		Entwicklungsversion(1.Requirement, 
+							2.Analyse, 
+							3.Design, 
+							4.Programmierung, 
+							5.Test) -> Releaseversion(1.Test der Releaseversion) -> Produktivversion(1.Test der Produktiv)
+							->(Releasertermin)
+							
+	- Zentrale Versionsverwaltung: (Bsp.: SubVersion)
+		-> 	Alles laeuft ueber ein Zentrales Repository. 
+			(Checkout,Update,Commit,Add,Merge,...)
+		
+	- Verteilte Versionsverwaltung: (Bsp.: Git)
+		-> 	Laeuft verteilt ueber mehrer Repositorys Optional koennte man eine Zentrale Rep laufen lassen.
+			(Push,Pull,Clone,...)
+		Vorteile 	-> 	Hoeher Geschwindigkeit, Dadurch dass jeder teilnehmer ein eignes Repository besitzt
+						benoetigt man nicht immer einen Netzzugang.
+		Nachteile 	->	Komplexe Versionsnummern, keine klare Regelung fuer Backup sicherung.
+
+Objektorientiertes Design / Design Patterns:
+	- Klassenbibliothek:
+		Organisierte Ansammlung von implementierten Klassen, der Zweck darin ist die wiederverwendung von Programmcode.
+	
+	- Klassenbasierte Muster:
+		Beziehungen zwischen Klassen (zur Übersetzungszeit).
+		-> 	MVC Pattern.
+		
+	- Objektbasierte Muster:
+		Beziehungen zwischen Objekten (zur Laufzeit).
+		-> Singleton
+		-> Observer
+	
+	- MVC Vorteile:
+		Aufteilung des Code und Einheitlichkeit.
+	
+	- Fabrik-Methode Vorteile/Nachteile:
+		Vor:
+			Prozess ist gekapselt und somit jederzeit austauschbar beim Creator.
+			Einheitliches Schemavorgabe von Produkt und erweitbar in der Erbklasse.
+		Nach: 
+			Der ConcreteCreator ist eng an seinen konkreten Produkten gekoppelt. 
+			Neue Produkte benötigen einen neuen ConcreteCreator oder starke Anpassungen.
+			
+	- Singleton:
+		Zweck der ganzen Sache ist, dass genau eine Instanz der Klasse erzeugt wird, weshalb die static
+		Als Attribut, sowohl auch static Methode ist.
+		- Wieso braucht ein Singleton nicht final zu sein?
+			-> Da sie von aussen nicht geaendert werden kann.
+		- Vorteil: 
+			Einfach anwendbar, indem man ausschließlich private Konstruktoren implementiert und
+			statische Zugriffsmethoden hinzufügt.
+		- Nachteile:
+			Bei Mehrbenutzer-Anwendungen kann ein Singleton ein Flaschenhals für die Performance darstellen.
+			Die Zerstörung eines Singleton ist bei Mehrbenutzer-Anwendungen problematisch.
+	
+	- Observer:
+		Zweck: 
+			Objekte können automatisch auf die Zustandsänderung eines anderen Objekts mittels Aktualisierung reagieren.
+		Vorteil: 
+			Automatische anpassung des Zustand. ANzahl der beobachtungen muss nicht festgelegt werden.
+		Nachteil:
+			Erhoete gefahr fuer Fehleranfaelligkeit und kein ueberblick was wem beobachtet.
+			
+	- Strukturmuster:
+		Objektbasierte Strukturmuster beschreiben Wege, Objekte zusammenzuführen, um neue Funktionalität zu gewinnen.
+
+	- Design Patterns:
+		ermöglichen das Erstellen von Frameworks und erleichtern dadurch das Erstellen einer in sich konsistenten GUI.
+		
+Vertiefung Java:
+	-Konventionen
+		Java Knigge: lesbarer Quellcode und einhaltung von Konventionen.
+		
+	-Enumeration
+		Datentyp für Variablen mit einer endlichen Wertemenge. ->KeyWord(enum)
+		-> kann nicht erben oder geerbt werden.
+
+	-Generics
+		Srachmittel, mit denen Klassen und Methoden mit Typparametern parametrisiert werden können,
+		um Typsicherheit trotz generischer Programmierung zu ermöglichen
+		Typeinschränkungen: 
+			Es gibt kein implements. Die Implementierung eines Interfaces kann aber gefordert werden.
+		wildcards: 
+			<?> => unbounded wildcard
+			<? extends [Type]> => upper bounded wildcard
+			<? extends [Type] & [Type2]> => multipe bounds
+			<? super [Type]> => lower bounded wildcard
+
+Software Tests:
+	- TDD:
+		JUnit-Tests laufen nicht erfolgreich durch (, Tests werden rot), dann Korrekturen durchführen,
+		bis alle Tests Ok sind (, Tests werden grün), dann Weiterentwicklung.
+		
+	- Annotationen:
+		ist einfach sowas wie @Override sind Metdadaten
+		
+	- Assertions Methoden: 
+		assertFalse, assertNotNull, assertNull und assertTrue.
+	
+	- fail:
+		fail("Exception muss geworfen werden, da ...")
+		im try von try catch drinne, wo catch am ende leer bleibt
+	
+	- Beispiel:
+		@Test
+		void test{
+			Throwable exc = assertThrows(IllegalArgumentException.class,() -> {new Person("Elke", null);
+			});
+			assertEquals("Nachname darf nicht null sein!",
+			exc.getMessage());
+		}
+		
+	- Wieso Komponententests und Integrationstests mit JUnit?:
+		Unit ist für die Durchführung und Automatisierung von Komponententests und Integrationstests geeignet.
+		Unit Tests bilden die Brücke zwischen Fachlichkeit und Programmierung.
+
+Solid/Clean Code:
+
+	- Wieso Solid?:
+		SOLID-Prinzipien führen zu einer höheren Wartbarkeit und Lebensdauer von Software sowie zu einer Reduktion der 
+		fehleranfälligkeit.
+
+	- Wieso Clean Code?:
+		Clean Code führt zu einer höheren Wartbarkeit und Lebensdauer von Software sowie zu einer Reduktion der 
+		Fehleranfälligkeit. 
+		
+	- Prinzip der einzelnen Verantwortlichkeiten (Single Responsibility Principle):
+		Jede Klasse sollte eine strikt abgegrenzte Verantwortlichkeit besitzen.
+		Vermeiden Sie es, Klassen mehr als eine Aufgabe zu geben.
+		Je mehr aufgaben eine Klasse hat, desto hoeher die wahrscheinlichkeit, dass in der Zukunkt bei aenderungen
+		fehler mit sich bringt.
+	
+	- Prinzip der Offen- und Verschlossenheit (Open Closed Principle):
+		Ein Modul, eine Klasse, eine Methode sollen offen für Erweiterungen sein, aber geschlossen gegen Modifikationen.
+		Die vorhandenen Module, Klassen, Methoden werden bei einer Fortentwicklung der Software nicht geändert. Dadurch 
+		wird vermieden, dass in dem bestehenden Programm Fehler einprogrammiert werden.
+	
+	- Liskov' sches Ersetzbarkeitsprinzip (Liskov Substitution Principle):
+		Unterklassen (abgeleitete Klassen) sollen anstelle ihrer Oberklassen einsetzbar sein.
+		Eine Instanz einer Unterklasse muss sich so verhalten, dass jemand, der meint,
+		ein Objekt der Oberklasse vor sich zu haben, nicht durch unerwartetes Verhalten überrascht wird, wenn es sich
+		dabei tatsächlich um ein Objekt der Unterklasse handelt.
+		Durch das Prinzip wird garantiert, dass Operationen vom Typ Oberklasse, die auf ein Objekt des Typs Unterklasse 
+		angewendet werden, auch korrekt ausgeführt werden.
+		Ein Objekt vom Typ Unterklasse kann dann bedenkenlos durch ein Objekt vom Typ Oberklasse ersetzt werden.
+	
+	- Schnittstellenaufteilungsprinzip (Interface Segregation Principle):
+		Große Schnittstellen sollen in mehrere kleinere Schnittstellen aufgeteilt werden, falls implementierende 
+		Klassen ansonsten unnötige Methoden haben müssen.
+		Mit Hilfe des Interface-Segregation Principles ist es möglich, eine Software derart in entkoppelte und
+		somit leichter refaktorisierbare Klassen aufzuteilen, dass zukünftige fachliche oder technische 
+		Anforderungen an die Software nur geringe Änderungen an der Software selbst benötigen.
+		Segregation bedeutet Abtrennung. Das Prinzip besagt, dass ein Client nicht von Details eines Service
+		abhängig sein soll, die er gar nicht benötigt. Je weniger in dessen Interface enthalten ist, desto 
+		geringer ist die Kopplung zwischen den beiden Komponenten.
+		
+	- Abhängigkeits-Umkehr-Prinzip (Dependency Inversion Principle):
+		Das Dependency Inversion Principle besagt, dass Module höherer Ebenen nicht von konkreten Implementierungen 
+		aus Modulen niedriger Ebenen abhängen sollen.
+		Änderungen von Modulen niedriger Ebenen sollen nicht zu unerwünschte Seiteneffekten bei Modulen
+		höherer Ebenen führen. Module niedriger Ebene sollen einfach austauschbar sein.
+		Verwendet eine High-Level Klasse eine Low-Level Klasse unmittelbar, so ergibt sich eine starke Kopplung
+		zwischen beiden. Spätestens beim Versuch, die High-Level Klasse isoliert zu testen, wird man auf
+		Schwierigkeiten stoßen. Aus diesem Grund sollte die High-Level Klasse von einem Interface abhängig sein, das 
+		wiederum von der Low-Level Klasse implementiert wird. So kann die Low-Level Klasse im Unit Test
+		durch ein Mockup ersetzt werden. 
+		
+sontiges:
+	- Reflection:
+		Reflection (Reflexion) ist die Fähigkeit eines Programms, die eigene Struktur zur Laufzeit
+		zu analysieren oder auch zu verändern.
+		Mit Hilfe von Reflection können zur Laufzeit anhand eines Objektes Informationen über seine Klasse (Attribute, 
+		Konstruktoren, Methoden, Modifier, Annotationen, …) ausgelesen werden.
+		Mit Hilfe von Reflection können generisch und dynamisch Konstruktoren und Methoden eines Objekts aufgerufen 
+		werden.
